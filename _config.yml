@@ -14,7 +14,7 @@ author:  # change following line to your infomation.
   name: Daniel Vassalo  # Be used at blog posts' author.
   first_name: Daniel  # Be used at index page about me section.
   last_name: Vassalo  # Be used at index page about me section.
-  avatar: /static/assets/img/landing/avatar.jpg  # upload your avatar at directory and edit it.
+  avatar: /static/assets/img/landing/pp.jpg  # upload your avatar at directory and edit it.
   github_username: vassalo  # Leave blank if you don't have now
   linkedin_id: danielvassalo # Leave blank if you don't have now
   facebook_username: daniel.vassalo.71  # Leave blank if you don't have now
