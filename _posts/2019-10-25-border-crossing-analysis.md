@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "Border Crossing analysis"
-date:   2019-11-06
+date:   2019-10-25
 desc: "Exploratory data analysis over a US incoming crossing border dataset"
 keywords: "exploratory analysis,R,border crossing,Mexico to USA,Canada to USA"
 categories: [R]
