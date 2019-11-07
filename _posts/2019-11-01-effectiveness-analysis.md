@@ -22,4 +22,28 @@ library(randomForest)
 
 Now we need to define some functions to help with the evaluation and comparison processes.
 
-The first function will be the precision function, which tells us the proportion of "positive predictions" that were actually correct.
+The first function will be the **precision function**, which tells us the proportion of *positive predictions* that were actually correct.
+
+```R
+# Precision: proportion of correct "positive predictions"
+precision <- function(tp, fp){
+  
+  precision <- tp/(tp+fp)
+  
+  return(precision)
+}
+```
+> To achieve 100% of precision, a model cannot produce *false positives* - i.e., all of the *positive predictions* must be **actually** *positive observations*.
+
+Following that, we need to define the **recall function**, which tells us the proportion of *actual positives* that were correctly identified.
+
+```R
+# Recall: proportion of correctly identified "positive observations"
+recall <- function(tp, fn){
+  
+  recall <- tp/(tp+fn)
+  
+  return(recall)
+}
+```
+> To achieve 100% of recall, a model cannot produce *false negatives* - i.e., all of *positive observations* must be **predicted** as *positives*.
