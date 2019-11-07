@@ -58,7 +58,7 @@ summary(dataset)
  (Other)              :328364  
  ```
  
-The output above is kinda messy, right? So we can try to run some alternative commands: `str()` or `glimpse()`, which gives us less detailed, but equally valuable, descriptions.
+The output above is kinda messy, right? So we can try to run some alternative commands: `str()` or `glimpse()`, which gives us the quantity and the types of the variables on the dataset.
  
 ```R
 str(dataset)
