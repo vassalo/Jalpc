@@ -23,6 +23,7 @@ Then I ran the following code to know more about the dataset structure:
 summary(dataset)
 ```
 >
+```
                   Port.Name               State          Port.Code   
  Eastport              :  5541   North Dakota: 57071   Min.   : 101  
  Buffalo-Niagara Falls :  3348   Washington  : 44677   1st Qu.:2304  
@@ -55,13 +56,15 @@ summary(dataset)
  POINT (-111.96 49)   :  3060  
  POINT (-115.39 32.67):  3060  
  (Other)              :328364  
+ ```
  
- The output above is kinda messy, right? So we can try to run some alternative commands: `str()` or `glimpse()`, which gives us less detailed, but equally valuable, descriptions.
+The output above is kinda messy, right? So we can try to run some alternative commands: `str()` or `glimpse()`, which gives us less detailed, but equally valuable, descriptions.
  
- ```R
+```R
 str(dataset)
 ```
 >
+```
 'data.frame':	346733 obs. of  8 variables:
  $ Port.Name: Factor w/ 116 levels "Alcan","Alexandria Bay",..: 19 108 73 65 106 57 74 84 80 22 ...
  $ State    : Factor w/ 15 levels "Alaska","Arizona",..: 3 5 3 2 10 5 11 13 11 10 ...
@@ -71,11 +74,13 @@ str(dataset)
  $ Measure  : Factor w/ 12 levels "Bus Passengers",..: 12 7 12 9 4 12 1 10 6 12 ...
  $ Value    : int  34447 428 81217 62 16377 179 1054 1808 6685 24759 ...
  $ Location : Factor w/ 224 levels "POINT (-100.05 49)",..: 75 142 88 54 162 143 198 205 17 163 ...
-  
- ```R
+```
+
+```R
 glimpse(dataset)
 ```
 >
+```
 Observations: 346,733
 Variables: 8
 $ Port.Name <fct> Calexico East, Van Buren, Otay Mesa, Nogales, Trout River, Madawaska, Pembina, Progreso, Port...
@@ -86,6 +91,7 @@ $ Date      <fct> 03/01/2019 12:00:00 AM, 03/01/2019 12:00:00 AM, 03/01/2019 12:
 $ Measure   <fct> Trucks, Rail Containers Full, Trucks, Trains, Personal Vehicle Passengers, Trucks, Bus Passen...
 $ Value     <int> 34447, 428, 81217, 62, 16377, 179, 1054, 1808, 6685, 24759, 235, 584, 1612, 80, 509, 122, 648...
 $ Location  <fct> POINT (-115.48433000000001 32.67524), POINT (-67.94271 47.16207), POINT (-117.05333 32.57333)...
+```
 
 You may be thinking: "ok, that's better. But... What does it tell us?"
 
@@ -97,8 +103,10 @@ We can look at how many observations were made on each border, using the followi
 table(dataset$border)
 ```
 >
+```
 US-Canada Border US-Mexico Border 
           266187            80546 
+```
 
 We have 266187 observations made on US-Canada and 80546 on US-Mexico border.
 
@@ -112,6 +120,7 @@ mexico_dataset = droplevels(dataset %>% filter(Border == "US-Mexico Border"))
 str(mexico_dataset)
 ```
 >
+```
 'data.frame':	80546 obs. of  8 variables:
  $ Port.Name: Factor w/ 27 levels "Andrade","Boquillas",..: 5 17 16 19 23 26 21 15 2 17 ...
  $ State    : Factor w/ 4 levels "Arizona","California",..: 2 2 1 4 2 2 4 1 4 2 ...
@@ -121,6 +130,7 @@ str(mexico_dataset)
  $ Measure  : Factor w/ 12 levels "Bus Passengers",..: 12 12 9 10 1 10 10 10 3 5 ...
  $ Value    : int  34447 81217 62 1808 7779 1993 740 139 4362 573597 ...
  $ Location : Factor w/ 52 levels "POINT (-100.49917 28.70889)",..: 31 40 20 43 38 34 49 18 5 40 ...
+ ```
  
  Here I used the `%>%` pipeline operator to pass the `dataset` data to the `filter()` function. Then I wrapped it all with the `droplevels()` function, to drop unused levels from the new dataset.
  
