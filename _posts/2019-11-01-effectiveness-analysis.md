@@ -13,16 +13,18 @@ The most common question on the machine learning world is "what is the best mode
 
 What I mean by that, is that the model depends on the problem. Each model will have a different effectiveness on each problem. And because of that we need to know how to measure the model effectiveness, so we can properly tell if the model fits or not the problem.
 
+
 ## Confusion Matrix
 
 ![alt text](https://miro.medium.com/max/712/1*Z54JgbS4DUwWSknhDCvNTQ.png "Confusion Matrix")
 
 The confusion matrix is a form of visualize the performance of an algorithm.
 
-- True Positives (TP): the amount of "hits" of the algorithm. The amount of times the algorithm correctly predicted positive values.
-- True Negatives (TN): the amount of times the algorithm correctly predicted negative values.
-- False Positives (FP): the amount of times the algorithm incorrectly predicted positive values - i.e., the model predicted *positive* when it should've predicted *negative*.
-- False Negatives (FN): the amount of times the algorithm incorrectly predicted negative values - i.e., the model predicted *negative* when it should've predicted *positive*
+- **True Positives (TP)**: the amount of "hits" of the algorithm. The amount of times the algorithm correctly predicted positive values.
+- **True Negatives (TN)**: the amount of times the algorithm correctly predicted negative values.
+- **False Positives (FP)**: the amount of times the algorithm incorrectly predicted positive values - i.e., the model predicted *positive* when it should've predicted *negative*.
+- **False Negatives (FN)**: the amount of times the algorithm incorrectly predicted negative values - i.e., the model predicted *negative* when it should've predicted *positive*
+
 
 ## Coding
 
