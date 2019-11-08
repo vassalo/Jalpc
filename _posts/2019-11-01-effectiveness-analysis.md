@@ -82,3 +82,119 @@ measures <- function(test, pred){
 }
 ```
 
+Now we get into the machine learning models and techniques:
+
+```R
+####################################################### Techniques ###################################################################
+
+executeJ48 <- function(dataset, folds){
+  results <- lapply(folds, function(x) {
+    train <- dataset[-x, ]
+    test <- dataset[x, ]
+    model <- J48(train$Smell~ ., data = train)
+    pred <- predict(model, test)
+    
+    results <- measures(test$Smell, pred)
+    
+    return(results)
+  })
+  
+}
+
+executeNaiveBayes <- function(dataset, folds){
+  results <- lapply(folds, function(x) {
+    train <- dataset[-x, ]
+    test <- dataset[x, ]
+    model <- naiveBayes(train, train$Smell, laplace = 1)
+    pred <- predict(model, test)
+    
+    results <- measures(test$Smell, pred)
+    
+    return(results)
+  })
+  
+}
+
+executeC50 <- function(dataset, folds){
+  results <- lapply(folds, function(x) {
+    train <- dataset[-x, ]
+    test <- dataset[x, ]
+    model <- C5.0(train, train$Smell)
+    pred <- predict(model, test)
+    
+    results <- measures(test$Smell, pred)
+    
+    return(results)
+  })
+  
+}
+
+executeSVM <- function(dataset, folds){
+  results <- lapply(folds, function(x) {
+    train <- dataset[-x, ]
+    test <- dataset[x, ]
+    model <- svm(train$Smell~ ., data = train)
+    pred <- predict(model, test)
+    
+    results <- measures(test$Smell, pred)
+    
+    return(results)
+  })
+  
+}
+
+executeOneR <- function(dataset, folds){
+  results <- lapply(folds, function(x) {
+    train <- dataset[-x, ]
+    test <- dataset[x, ]
+    model <- OneR(train$Smell~ ., data = train)
+    pred <- predict(model, test)
+    
+    results <- measures(test$Smell, pred)
+    
+    return(results)
+  })
+  
+}
+
+executeJRip <- function(dataset, folds){
+  results <- lapply(folds, function(x) {
+    train <- dataset[-x, ]
+    test <- dataset[x, ]
+    model <- JRip(train$Smell~ ., data = train)
+    pred <- predict(model, test)
+    
+    results <- measures(test$Smell, pred)
+    
+    return(results)
+  })
+  
+}
+
+executeRandomForest <- function(dataset, folds){
+  results <- lapply(folds, function(x) {
+    train <- dataset[-x, ]
+    test <- dataset[x, ]
+    model <- randomForest(train$Smell~ ., data = train)
+    pred <- predict(model, test)
+    
+    results <- measures(test$Smell, pred)
+    
+    return(results)
+  })
+}
+
+executeSMO <- function(dataset, folds){
+  results <- lapply(folds, function(x) {
+    train <- dataset[-x, ]
+    test <- dataset[x, ]
+    model <- SMO(train$Smell~ ., data = train)
+    pred <- predict(model, test)
+    
+    results <- measures(test$Smell, pred)
+    
+    return(results)
+  })
+}
+```
+
