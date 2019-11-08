@@ -1,9 +1,9 @@
 ---
 layout: post
-title:  "Bad Smell Detection - effectiveness analysis"
-date:   2019-10-25
+title:  "Effectiveness analysis"
+date:   2019-11-01
 desc: ""
-keywords: "bad smells detection,effectiveness analysis,precision,recall,f1 score,f-measure,R"
+keywords: "effectiveness analysis,precision,recall,f1 score,f-measure,R"
 categories: [R]
 tags: [Effectiveness Analysis,R]
 icon: icon-clipboard
@@ -82,7 +82,7 @@ measures <- function(test, pred){
 }
 ```
 
-Now we get into the machine learning models and techniques:
+Now we get into the definition of machine learning models and techniques. By running the following functions, you'll get the measures obtained from the execution of the correspondent models.
 
 ```R
 ####################################################### Techniques ###################################################################
@@ -197,4 +197,3 @@ executeSMO <- function(dataset, folds){
   })
 }
 ```
-
