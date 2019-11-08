@@ -9,7 +9,7 @@ tags: [Exploratory Analysis,R]
 icon: icon-html
 ---
 
-First of all, I downloaded the following dataset: https://www.kaggle.com/akhilv11/border-crossing-entry-data, which provides summary statistics for inbound crossings at the U.S.-Canada and the U.S.-Mexico border at the port level.
+First of all, I downloaded the [Border Crossing dataset](https://www.kaggle.com/akhilv11/border-crossing-entry-data), which provides summary statistics for inbound crossings at the U.S.-Canada and the U.S.-Mexico border at the port level.
 
 After that, I imported the dataset into R Studio and stored it (```Border_Crossing_Entry_Data```) into the following variable:
 
