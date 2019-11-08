@@ -6,7 +6,7 @@ desc: ""
 keywords: "bad smells detection,effectiveness analysis,precision,recall,f1 score,f-measure,R"
 categories: [R]
 tags: [Effectiveness Analysis,R]
-icon: icon-html
+icon: icon-clipboard-list
 ---
 
 First things first. We need to start off by importing some machine learning libraries:
