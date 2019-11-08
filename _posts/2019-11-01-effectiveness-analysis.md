@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Effectiveness analysis"
+title:  "Effectiveness analysis with R"
 date:   2019-11-01
 desc: ""
 keywords: "effectiveness analysis,precision,recall,f1 score,f-measure,R"
@@ -9,18 +9,24 @@ tags: [Effectiveness Analysis,R]
 icon: icon-clipboard
 ---
 
-First things first. We need to start off by importing some machine learning libraries:
+The most common question on the machine learning world is "what is the best model to use?", and the answer to that is another question: "what kind of problem are you trying to solve?".
 
-```R
-library(RWeka)
-library(e1071)
-library(gmodels)
-library(caret)
-library(irr)
-library(randomForest)
-```
+What I mean by that, is that the model depends on the problem. Each model will have a different effectiveness on each problem. And because of that we need to know how to measure the model effectiveness, so we can properly tell if the model fits or not the problem.
 
-Now we need to define some functions to help with the evaluation and comparison processes.
+## Confusion Matrix
+
+![alt text](https://miro.medium.com/max/712/1*Z54JgbS4DUwWSknhDCvNTQ.png "Confusion Matrix")
+
+The confusion matrix is a form of visualize the performance of an algorithm.
+
+- True Positives (TP): the amount of "hits" of the algorithm. The amount of times the algorithm correctly predicted positive values.
+- True Negatives (TN): the amount of times the algorithm correctly predicted negative values.
+- False Positives (FP): the amount of times the algorithm incorrectly predicted positive values - i.e., the model predicted *positive* when it should've predicted *negative*.
+- False Negatives (FN): the amount of times the algorithm incorrectly predicted negative values - i.e., the model predicted *negative* when it should've predicted *positive*
+
+## Coding
+
+Now we'll define some functions to help with the effectiveness measuring processes.
 
 The first function will be the **precision function**, which tells us the proportion of *positive predictions* that were actually correct.
 
@@ -79,121 +85,5 @@ measures <- function(test, pred){
                 f_measure(true_positive,false_positive,false_negative))
   
   return(measures)
-}
-```
-
-Now we get into the definition of machine learning models and techniques. By running the following functions, you'll get the measures obtained from the execution of the correspondent models.
-
-```R
-####################################################### Techniques ###################################################################
-
-executeJ48 <- function(dataset, folds){
-  results <- lapply(folds, function(x) {
-    train <- dataset[-x, ]
-    test <- dataset[x, ]
-    model <- J48(train$Smell~ ., data = train)
-    pred <- predict(model, test)
-    
-    results <- measures(test$Smell, pred)
-    
-    return(results)
-  })
-  
-}
-
-executeNaiveBayes <- function(dataset, folds){
-  results <- lapply(folds, function(x) {
-    train <- dataset[-x, ]
-    test <- dataset[x, ]
-    model <- naiveBayes(train, train$Smell, laplace = 1)
-    pred <- predict(model, test)
-    
-    results <- measures(test$Smell, pred)
-    
-    return(results)
-  })
-  
-}
-
-executeC50 <- function(dataset, folds){
-  results <- lapply(folds, function(x) {
-    train <- dataset[-x, ]
-    test <- dataset[x, ]
-    model <- C5.0(train, train$Smell)
-    pred <- predict(model, test)
-    
-    results <- measures(test$Smell, pred)
-    
-    return(results)
-  })
-  
-}
-
-executeSVM <- function(dataset, folds){
-  results <- lapply(folds, function(x) {
-    train <- dataset[-x, ]
-    test <- dataset[x, ]
-    model <- svm(train$Smell~ ., data = train)
-    pred <- predict(model, test)
-    
-    results <- measures(test$Smell, pred)
-    
-    return(results)
-  })
-  
-}
-
-executeOneR <- function(dataset, folds){
-  results <- lapply(folds, function(x) {
-    train <- dataset[-x, ]
-    test <- dataset[x, ]
-    model <- OneR(train$Smell~ ., data = train)
-    pred <- predict(model, test)
-    
-    results <- measures(test$Smell, pred)
-    
-    return(results)
-  })
-  
-}
-
-executeJRip <- function(dataset, folds){
-  results <- lapply(folds, function(x) {
-    train <- dataset[-x, ]
-    test <- dataset[x, ]
-    model <- JRip(train$Smell~ ., data = train)
-    pred <- predict(model, test)
-    
-    results <- measures(test$Smell, pred)
-    
-    return(results)
-  })
-  
-}
-
-executeRandomForest <- function(dataset, folds){
-  results <- lapply(folds, function(x) {
-    train <- dataset[-x, ]
-    test <- dataset[x, ]
-    model <- randomForest(train$Smell~ ., data = train)
-    pred <- predict(model, test)
-    
-    results <- measures(test$Smell, pred)
-    
-    return(results)
-  })
-}
-
-executeSMO <- function(dataset, folds){
-  results <- lapply(folds, function(x) {
-    train <- dataset[-x, ]
-    test <- dataset[x, ]
-    model <- SMO(train$Smell~ ., data = train)
-    pred <- predict(model, test)
-    
-    results <- measures(test$Smell, pred)
-    
-    return(results)
-  })
 }
 ```
