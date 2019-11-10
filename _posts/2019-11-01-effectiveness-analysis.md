@@ -9,7 +9,9 @@ tags: [Effectiveness Analysis,R]
 icon: icon-clipboard
 ---
 
-The most common question on the machine learning world is "what is the best model to use?", and the answer to that is another question: "what kind of problem are you trying to solve?".
+> **Note:** if you want to execute the code as you follow this post, you can do so on this [Google Colab Notebook](https://colab.research.google.com/drive/1f7lq0IQTd4G4Go8c2ptkE9UznFpKkm1W)
+
+The most common question on the machine learning community is "what is the best model to use?", and the answer to that is another question: "what kind of problem are you trying to solve?".
 
 What I mean by that, is that the model depends on the problem. Each model will have a different effectiveness on each problem. And because of that we need to know how to measure the model effectiveness, so we can properly tell if the model fits or not the problem.
 
