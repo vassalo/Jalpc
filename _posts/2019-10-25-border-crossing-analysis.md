@@ -9,7 +9,7 @@ tags: [Exploratory Analysis,R]
 icon: icon-html
 ---
 
-> Note: if you want to execute the code as you follow this post, you can do so on this [Google Colab Notebook](https://colab.research.google.com/drive/1XIS1_3Vr6MOC1PXCVa9Bz9xbwO8e-uEb).
+> **Note:** if you want to execute the code as you follow this post, you can do so on this [Google Colab Notebook](https://colab.research.google.com/drive/1XIS1_3Vr6MOC1PXCVa9Bz9xbwO8e-uEb).
 
 First of all, I chose the [Border Crossing dataset](https://www.kaggle.com/akhilv11/border-crossing-entry-data), which provides summary statistics for inbound crossings at the U.S.-Canada and the U.S.-Mexico border at the port level.
 
