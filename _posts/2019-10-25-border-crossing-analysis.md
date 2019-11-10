@@ -9,12 +9,22 @@ tags: [Exploratory Analysis,R]
 icon: icon-html
 ---
 
-First of all, I downloaded the [Border Crossing dataset](https://www.kaggle.com/akhilv11/border-crossing-entry-data), which provides summary statistics for inbound crossings at the U.S.-Canada and the U.S.-Mexico border at the port level.
+> Note: if you want to execute the code as you follow this post, you can do so on this [Google Colab Notebook](https://colab.research.google.com/drive/1XIS1_3Vr6MOC1PXCVa9Bz9xbwO8e-uEb).
 
-After that, I imported the dataset into R Studio and stored it (```Border_Crossing_Entry_Data```) into the following variable:
+First of all, I chose the [Border Crossing dataset](https://www.kaggle.com/akhilv11/border-crossing-entry-data), which provides summary statistics for inbound crossings at the U.S.-Canada and the U.S.-Mexico border at the port level.
+
+And to start off the coding, let's import some libraries.
 
 ```R
-dataset = Border_Crossing_Entry_Data
+library(dplyr)
+library(ggplot2)
+library(tidyr)
+```
+
+After that, I imported the dataset (`Border_Crossing_Entry_Data`) from my Google Drive and stored it into the following variable:
+
+```R
+dataset = read.csv(sprintf("https://docs.google.com/uc?id=%s&export=download", "1Xmdgj4VA9VMtS_yn3jgYHjMcArI-T_Xr"))
 ```
 
 Then I ran the following code to know more about the dataset structure:
@@ -97,10 +107,10 @@ You may be thinking: "ok, that's better. But... What does it tell us?"
 
 Well, the outputs above tell us the types of the variables on the dataset, and looking back to the first output we can make some observations - e.g., we have data obtained from two borders ("US-Canada Border" and "US-Mexico Border"), at 15 different states, at 116 different ports, at 224 distinct geographical points, in 279 different days.
 
-We can look at how many observations were made on each border, using the following commands:
+We can also look at how many observations were made on each border, using the following commands:
 
  ```R
-table(dataset$border)
+table(dataset$Border)
 ```
 >
 ```
