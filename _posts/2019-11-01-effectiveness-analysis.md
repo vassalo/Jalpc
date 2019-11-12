@@ -62,6 +62,16 @@ The third function will be the **F-measure function**, which calculates the F1 S
 
 In comparison to the classic accuracy formula, the F1 Score is a better way to calculate the accuracy, since unbalanced data has a different impact on the result - forcing the model to seek a balance between Precision and Recall.
 
+```R
+# F-measure
+f_measure <- function(tp, fp, fn){
+  
+  f_measure <- (2*precision(tp,fp)*recall(tp,fn))/(recall(tp,fn) + precision(tp, fp))
+  
+  return(f_measure)
+}
+```
+
 And finally, we'll define a function to summarize all of these measures (precision, recall, F1 score).
 
 ```R
