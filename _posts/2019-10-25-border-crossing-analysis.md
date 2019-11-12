@@ -148,15 +148,14 @@ str(mexico_dataset)
  $ Value    : int  34447 81217 62 1808 7779 1993 740 139 4362 573597 ...
  $ Location : Factor w/ 52 levels "POINT (-100.49917 28.70889)",..: 31 40 20 43 38 34 49 18 5 40 ...
  ```
- 
- Here I used the `%>%` pipeline operator to pass the `dataset` data to the `filter()` function. Then I wrapped it all with the `droplevels()` function, to drop unused levels from the new dataset.
+ > **Note:** Here I used the `%>%` pipeline operator to pass the `dataset` data to the `filter()` function. Then I wrapped it all with the `droplevels()` function, to drop unused levels from the new dataset.
  
  The above output tells us that the US-Mexico border only has 4 out of the 15 states, 27 ports, 52 different locations, and all of these data were registered in 279 different days.
 
 Nice! So far we filter the data by the border name. Let's try and filter a in 1996.
 
 ```R
-mexico_1996_dataset = droplevels(dataset %>% filter(Border == "US-Mexico Border" & grepl("1996",Date)))
+mexico_1996_dataset = droplevels(dataset %>% filter(Border == "US-Mexico Border" & grepl("1996", Date)))
 str(mexico_1996_dataset)
 ```
 >
@@ -171,6 +170,7 @@ str(mexico_1996_dataset)
  $ Value    : int  0 21826 198 10 1296638 16710 59512 97 19 526437 ...
  $ Location : Factor w/ 25 levels "POINT (-100.51 28.71)",..: 13 17 25 4 5 20 8 11 18 25 ...
 ```
+> **Note:** Here I used the built-in function `grepl()` to verify if value of `Date` contains "1996".
 
 Excellent! Now we know that 3600 observations were made over the US-Mexico Border in 1996.
 
