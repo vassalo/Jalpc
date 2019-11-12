@@ -11,9 +11,13 @@ icon: icon-html
 
 > **Note:** if you want to execute the code as you follow this post, you can do so on this [Google Colab Notebook](https://colab.research.google.com/drive/1XIS1_3Vr6MOC1PXCVa9Bz9xbwO8e-uEb).
 
+## Dataset
+
 First of all, I chose the [Border Crossing dataset](https://www.kaggle.com/akhilv11/border-crossing-entry-data), which provides summary statistics for inbound crossings at the U.S.-Canada and the U.S.-Mexico border at the port level.
 
-And to start off the coding, let's import some libraries.
+## Coding
+
+To start off the coding, let's import some libraries.
 
 ```R
 library(dplyr)
@@ -21,11 +25,15 @@ library(ggplot2)
 library(tidyr)
 ```
 
-After that, I imported the dataset (`Border_Crossing_Entry_Data`) from my Google Drive and stored it into the following variable:
+## Importing the data
+
+After that, we're gonna import the dataset (`Border_Crossing_Entry_Data`) from my Google Drive and store it into the following variable:
 
 ```R
 dataset = read.csv(sprintf("https://docs.google.com/uc?id=%s&export=download", "1Xmdgj4VA9VMtS_yn3jgYHjMcArI-T_Xr"))
 ```
+
+## Exploring the data
 
 Then I ran the following code to know more about the dataset structure:
 
@@ -124,7 +132,6 @@ So... What about we take a closer look at the data from the Mexico border?
 
 Let's do it!
 
-
  ```R
 mexico_dataset = droplevels(dataset %>% filter(Border == "US-Mexico Border"))
 str(mexico_dataset)
@@ -144,4 +151,29 @@ str(mexico_dataset)
  
  Here I used the `%>%` pipeline operator to pass the `dataset` data to the `filter()` function. Then I wrapped it all with the `droplevels()` function, to drop unused levels from the new dataset.
  
- And the final result tells us that the US-Mexico border only has 4 out of the 15 states, 27 ports, and 52 different locations.
+ The above output tells us that the US-Mexico border only has 4 out of the 15 states, 27 ports, 52 different locations, and all of these data were registered in 279 different days.
+
+Nice! So far we filter the data by the border name. Let's try and filter a in 1996.
+
+```R
+mexico_1996_dataset = droplevels(dataset %>% filter(Border == "US-Mexico Border" & grepl("1996",Date)))
+str(mexico_1996_dataset)
+```
+>
+```
+'data.frame':	3600 obs. of  8 variables:
+ $ Port.Name: Factor w/ 25 levels "Andrade","Brownsville",..: 1 24 11 25 9 2 7 23 15 11 ...
+ $ State    : Factor w/ 4 levels "Arizona","California",..: 2 2 4 4 4 4 1 1 2 4 ...
+ $ Port.Code: int  2502 2505 2304 2404 2402 2301 2601 2606 2506 2304 ...
+ $ Border   : Factor w/ 1 level "US-Mexico Border": 1 1 1 1 1 1 1 1 1 1 ...
+ $ Date     : Factor w/ 12 levels "01/01/1996 12:00:00 AM",..: 12 12 12 12 12 12 12 12 12 12 ...
+ $ Measure  : Factor w/ 12 levels "Bus Passengers",..: 7 3 9 12 5 12 3 10 9 5 ...
+ $ Value    : int  0 21826 198 10 1296638 16710 59512 97 19 526437 ...
+ $ Location : Factor w/ 25 levels "POINT (-100.51 28.71)",..: 13 17 25 4 5 20 8 11 18 25 ...
+```
+
+Excellent! Now we know that 3600 observations were made over the US-Mexico Border in 1996.
+
+## Conclusion
+
+The understanding of the data is an essential step before starting to make adjustments and run machine learning models over them. And to accomplish that, you have to visualize your data somehow. And with this post, I hope you've learned some tools to help you with that.
